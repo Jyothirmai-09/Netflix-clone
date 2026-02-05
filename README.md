@@ -4,7 +4,7 @@ A modern, responsive **streaming platform landing page UI** inspired by Netflix,
 This project focuses on frontend design, responsiveness, and smooth UI interactions.
 
 > ⚠️ **Disclaimer**  
-> This project is created **only for educational and portfolio purposes**.  
+> This project is created **only for educational purposes**.  
 > It does **not collect or store any user data** and is **not affiliated with Netflix** in any way.
 
 ---
