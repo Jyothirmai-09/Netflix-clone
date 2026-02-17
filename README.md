@@ -10,7 +10,7 @@ This project focuses on frontend design, responsiveness, and smooth UI interacti
 ---
 
 ## 🚀 Live Demo
-https://netflix-clone-4aimte7nu-jyothirmai-09s-projects.vercel.app
+https://netflix-clone-g8aqk422i-jyothirmai-09s-projects.vercel.app/
 
 ---
 
