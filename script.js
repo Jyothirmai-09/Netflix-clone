@@ -25,11 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentTheme = localStorage.getItem('theme') || 'dark';
     body.classList.toggle('light-theme', currentTheme === 'light');
 
-    themeToggle.addEventListener('click', function() {
-        body.classList.toggle('light-theme');
-        const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
-        localStorage.setItem('theme', theme);
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('light-theme');
+            const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+        });
+    }
 
     const observerOptions = {
         threshold: 0.1,
@@ -61,37 +63,33 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
     const carousel = document.querySelector('.carousel');
     const leftBtn = document.querySelector('.carousel-btn.left');
     const rightBtn = document.querySelector('.carousel-btn.right');
 
     if (carousel && leftBtn && rightBtn) {
-        const scrollAmount = 220;
-
+        const scrollAmount = 216;
         leftBtn.addEventListener('click', () => {
-            carousel.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
 
         rightBtn.addEventListener('click', () => {
-            carousel.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
 
         const updateButtons = () => {
-            const isAtStart = carousel.scrollLeft === 0;
-            const isAtEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1;
+            const isAtStart = carousel.scrollLeft <= 0;
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            const isAtEnd = carousel.scrollLeft >= maxScroll - 1;
 
             leftBtn.style.opacity = isAtStart ? '0.5' : '1';
+            leftBtn.disabled = isAtStart;
             rightBtn.style.opacity = isAtEnd ? '0.5' : '1';
+            rightBtn.disabled = isAtEnd;
         };
 
         carousel.addEventListener('scroll', updateButtons);
+        
         updateButtons();
     }
 });
